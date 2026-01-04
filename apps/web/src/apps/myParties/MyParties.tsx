@@ -1,7 +1,15 @@
 import { setRParty } from "../../state";
 import { Link } from "react-router-dom";
 import SlideIn from "../../components/SlideIn";
-import { Box, Card, Stack, Typography, IconButton, Dialog, Button } from "@mui/material";
+import {
+  Box,
+  Card,
+  Stack,
+  Typography,
+  IconButton,
+  Dialog,
+  Button,
+} from "@mui/material";
 import { useAppDispatch } from "../../state/redux";
 import {
   LocalParty,
@@ -219,7 +227,8 @@ const MyParties = () => {
         {/* Header */}
         <Box
           sx={{
-            background: "linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%)",
+            background:
+              "linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%)",
             borderBottom: "2px solid #F59E0B",
             py: 2.5,
             px: 3,
@@ -265,7 +274,8 @@ const MyParties = () => {
               fontSize: "1rem",
             }}
           >
-            Are you sure you want to delete this party? This action cannot be undone.
+            Are you sure you want to delete this party? This action cannot be
+            undone.
           </Typography>
 
           {/* Actions */}
