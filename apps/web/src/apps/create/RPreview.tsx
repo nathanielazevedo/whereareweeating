@@ -1,8 +1,6 @@
 import { useState } from "react";
 import CustomDialog from "./CustomDialog";
 import SlideIn from "../../components/SlideIn";
-import MainButton from "../../components/MainButton";
-import BackIconAction from "../../components/backIcons/BackIconAction";
 import { logo } from "../../assets";
 import {
   Box,
@@ -13,7 +11,6 @@ import {
   Skeleton,
   Stack,
   Typography,
-  TextField,
   Button,
   CircularProgress,
   Snackbar,
@@ -57,7 +54,6 @@ const RPreview = ({
 
   const handleFetchMore = async () => {
     setLoadingMore(true);
-    const prevLength = restaurants?.length || 0;
     await fetchMore();
     setLoadingMore(false);
     setSnackbarOpen(true);

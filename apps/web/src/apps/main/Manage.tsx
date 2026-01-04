@@ -4,15 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { fetchParty, endParty as rEndParty } from "../../state";
-import {
-  Box,
-  Chip,
-  Skeleton,
-  Typography,
-  Button,
-  Stack,
-  Card,
-} from "@mui/material";
+import { Box, Skeleton, Typography, Button, Stack, Card } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../state/redux";
 import { logo } from "../../assets";
 import PeopleIcon from "@mui/icons-material/People";

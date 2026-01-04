@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, Paper } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 import TwoStack from "../../components/TwoStack";
 import { constants } from "../../constants";
 

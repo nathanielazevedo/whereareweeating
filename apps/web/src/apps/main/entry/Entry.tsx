@@ -12,7 +12,6 @@ import {
   Chip,
   Stack,
   Typography,
-  Fade,
   Card,
   TextField,
   IconButton,
@@ -33,9 +32,6 @@ import SlideIn from "../../../components/SlideIn";
 import NewPartyDialog from "../dialogs/NewPartyDialog";
 import PasswordDialog from "../dialogs/PasswordDialog";
 
-import PartyHeader from "../components/PartyHeader";
-import RCarousel from "../components/RCarousel";
-import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import HowToVoteOutlinedIcon from "@mui/icons-material/HowToVoteOutlined";
 import ShareIcon from "@mui/icons-material/Share";
@@ -135,7 +131,7 @@ const Entry = () => {
   };
 
   const handleEditName = () => {
-    setEditedName(party.name || "Food Party");
+    setEditedName(party?.name || "Food Party");
     setIsEditingName(true);
   };
 
@@ -783,7 +779,7 @@ const Entry = () => {
             </Box>
           )}
 
-          {party.day_options && party.day_options.length > 0 && (
+          {party.days_to_vote_on && party.days_to_vote_on.length > 0 && (
             <Card
               sx={{
                 p: 2.5,
@@ -803,7 +799,7 @@ const Entry = () => {
             </Card>
           )}
 
-          {party.time_options && party.time_options.length > 0 && (
+          {party.hours_to_vote_on && party.hours_to_vote_on.length > 0 && (
             <Card
               sx={{
                 p: 2.5,

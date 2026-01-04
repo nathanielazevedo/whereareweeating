@@ -1,18 +1,14 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
 import { TransitionProps } from "@mui/material/transitions";
 import {
   Button,
-  DialogActions,
   Slide,
   Typography,
   Box,
   Stack,
   IconButton,
 } from "@mui/material";
-import CelebrationIcon from "@mui/icons-material/Celebration";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import ShareIcon from "@mui/icons-material/Share";
 import CloseIcon from "@mui/icons-material/Close";

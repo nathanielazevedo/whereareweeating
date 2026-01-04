@@ -1,15 +1,5 @@
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import MainButton from "../../../components/MainButton";
-import {
-  Box,
-  DialogActions,
-  Typography,
-  Button,
-  Stack,
-  IconButton,
-} from "@mui/material";
+import { Box, Typography, Button, Stack, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {

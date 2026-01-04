@@ -3,7 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import { Link, useNavigate } from "react-router-dom";
-import MainButton from "../../components/MainButton";
 import { logo } from "../../assets";
 
 const NavBar = ({ myPartys }: { myPartys?: boolean }) => {

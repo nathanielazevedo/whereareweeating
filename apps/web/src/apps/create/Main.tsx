@@ -2,7 +2,6 @@ import RForm from "./RForm";
 import api from "../../api";
 import { useState } from "react";
 import RPreview from "./RPreview";
-import Personal from "./Personal";
 import { useNavigate } from "react-router-dom";
 import { CreateParty } from "../../models/Party";
 // import { CustomRestaurant, Restaurant } from "../../models/Restaurant";
@@ -22,7 +21,6 @@ const Main = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [offset, setOffset] = useState(10);
-  const [pError, setPError] = useState("");
   const [rError, setRError] = useState("");
   const [restaurants, setRestaurants] = useState<R>();
   const [submitting, setSubmitting] = useState(false);
@@ -52,7 +50,7 @@ const Main = () => {
 
   const fetchMore = async () => {
     try {
-      const existingIds = restaurants?.map((r) => r.id) || [];
+      const existingIds = restaurants?.map((r: any) => r.id) || [];
       const data = {
         ...rFormData,
         offset,
@@ -90,7 +88,7 @@ const Main = () => {
       ...rFormData,
       vote_on_hours: false,
       vote_on_days: false,
-      max_voters: null,
+      max_voters: 0,
       password: "",
       days_to_vote_on: [],
       hours_to_vote_on: [],
@@ -101,7 +99,7 @@ const Main = () => {
       navigate("/party/" + party._id + "?new=true");
     } catch {
       setSubmitting(false);
-      setPError("There was an error creating your party. Try again.");
+      setRError("There was an error creating your party. Try again.");
       console.log("error");
     }
   };

@@ -2,7 +2,6 @@ import React from "react";
 import { Formik } from "formik";
 import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
-import MainButton from "../../components/MainButton";
 import { RestaurantCreate } from "../../models/Restaurant";
 import { TransitionProps } from "@mui/material/transitions";
 import { restaurantSchema, rvaluesInitial } from "./CreateHelpers";

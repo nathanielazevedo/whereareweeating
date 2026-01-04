@@ -2,8 +2,6 @@ import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SlideIn from "../../components/SlideIn";
-import MainButton from "../../components/MainButton";
-import BackIcon from "../../components/backIcons/BackIconTo";
 import { logo } from "../../assets";
 import { yelp_logo } from "../../assets/yelp";
 import {
@@ -21,7 +19,6 @@ import {
   Slider,
   MenuItem,
   Stack,
-  Button,
   CircularProgress,
   InputAdornment,
   IconButton,
@@ -81,8 +78,6 @@ const RForm = ({ rError, formData, fetchRestaurants }: Props) => {
                       "";
                     const state = data.address?.state || "";
                     const postcode = data.address?.postcode || "";
-                    const country =
-                      data.address?.country_code?.toUpperCase() || "";
 
                     // Prioritize: "City, State Zipcode" or just "Zipcode" if no city
                     let locationString = "";

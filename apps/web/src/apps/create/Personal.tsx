@@ -3,7 +3,7 @@ import SlideIn from "../../components/SlideIn";
 import MainButton from "../../components/MainButton";
 import { personalSchema, PersonalType } from "./CreateHelpers";
 import BackIcon from "../../components/backIcons/BackIconAction";
-import { Typography, FormControl, TextField } from "@mui/material";
+import { Typography, FormControl } from "@mui/material";
 
 type Props = {
   pError: string;
@@ -36,14 +36,7 @@ const CreateForm = ({
           initialValues={personalData}
           validationSchema={personalSchema}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-          }) => (
+          {({ handleSubmit }) => (
             <form
               onSubmit={handleSubmit}
               style={{
