@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm install && pnpm run build -- --filter=@chicken-tinder/web",
+  "buildCommand": "pnpm install && pnpm turbo run build --filter=@chicken-tinder/web",
   "outputDirectory": "apps/web/dist",
   "installCommand": "pnpm install",
   "rewrites": [
