@@ -1,5 +1,4 @@
 import { Box, Typography, Stack, Button } from "@mui/material";
-import TwoStack from "../../components/TwoStack";
 import { constants } from "../../constants";
 import { Link } from "react-router-dom";
 
