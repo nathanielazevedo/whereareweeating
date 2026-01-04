@@ -1,6 +1,7 @@
-import { Box, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack, Button } from "@mui/material";
 import TwoStack from "../../components/TwoStack";
 import { constants } from "../../constants";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -110,7 +111,22 @@ const Hero = () => {
                 </Box>
               </Box>
             </Box>
-            <TwoStack variant="hero" noTitle={true} body="" />
+            <Link
+              to="/party/create"
+              style={{ textDecoration: "none", width: "100%" }}
+            >
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                size="large"
+                sx={{
+                  fontWeight: "bold",
+                }}
+              >
+                CREATE A PARTY
+              </Button>
+            </Link>
           </Box>
 
           <Stack
