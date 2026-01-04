@@ -47,16 +47,17 @@ railway variables set MONGO="your_mongodb_connection_string"
 ### Configuration Files
 
 - `railway.json` - Railway deployment config
+- `nixpacks.toml` - Nixpacks configuration (specifies pnpm, Node.js 24)
 - `.railwayignore` - Files to exclude from deployment
 - `package.json` - Node.js version specified in `engines`
 
 ### Build Process
 
 Railway uses Nixpacks to:
-1. Detect Node.js project
-2. Install dependencies with `npm install`
-3. Run build command: `npm run build`
-4. Start server: `npm run start`
+1. Install Node.js 24 and pnpm
+2. Install dependencies with `pnpm install --frozen-lockfile`
+3. Run build command: `pnpm run build`
+4. Start server: `pnpm run start`
 
 ### Monitoring
 
