@@ -2,7 +2,7 @@
   "name": "b_ct",
   "main": "src/index.ts",
   "engines": {
-    "node": ">=24.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",

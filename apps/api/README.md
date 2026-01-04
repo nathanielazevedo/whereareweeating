@@ -54,7 +54,7 @@ railway variables set MONGO="your_mongodb_connection_string"
 ### Build Process
 
 Railway uses Nixpacks to:
-1. Install Node.js 24 and pnpm
+1. Install Node.js 22 and pnpm
 2. Install dependencies with `pnpm install --frozen-lockfile`
 3. Run build command: `pnpm run build`
 4. Start server: `pnpm run start`
