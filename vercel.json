@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run build -- --filter=@chicken-tinder/web",
+  "buildCommand": "pnpm install && pnpm run build -- --filter=@chicken-tinder/web",
   "outputDirectory": "apps/web/dist",
-  "installCommand": "npm install",
+  "installCommand": "pnpm install",
   "rewrites": [
     {
       "source": "/(.*)",
