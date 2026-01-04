@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Turbo cache
+.turbo/
+
+# Build outputs
+dist/
+build/
+.next/
+coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment files
+.env
+.env.*
+apps/**/.env
+packages/**/.env
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
+
+# Misc
+*.tsbuildinfo
+*.swp

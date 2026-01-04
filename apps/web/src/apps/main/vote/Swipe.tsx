@@ -1,0 +1,186 @@
+import API from "../../../api";
+import VoteTime from "./types/VoteTime";
+import VoteDays from "./types/VoteDays";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Party } from "../../../models/Party";
+import { useNavigate } from "react-router-dom";
+import BackDialog from "../dialogs/BackDialog";
+import VoteRestaurant from "./types/VoteRestaurant";
+import {
+  getPartyFromLocal,
+  updatePartyInLocal,
+} from "../../../utils/localStorage";
+
+const Swipe = () => {
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const [party, setParty] = useState<Party>();
+  const [rLikes, setRLikes] = useState<string[]>([]);
+  const [hLikes, setHLikes] = useState<string[]>([]);
+  const [dLikes, setDLikes] = useState<string[]>([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [votingStage, setVotingStage] = useState("restaurants");
+
+  useEffect(() => {
+    const getParty = async () => {
+      if (!id) return;
+      try {
+        const party = await API.getParty(id);
+        setParty(party);
+        setVotingStage("restaurants");
+      } catch {
+        console.log("error");
+      }
+    };
+
+    getParty();
+  }, [id, navigate]);
+
+  const fRV = async () => {
+    if (party?.vote_on_hours) {
+      setRLikes(rLikes);
+      setVotingStage("times");
+      return;
+    }
+    try {
+      if (!id) return;
+      await API.vote(id, rLikes, null, null);
+
+      const party = getPartyFromLocal(id);
+      if (party) {
+        party.r_likes = rLikes;
+        party.has_voted = true;
+        updatePartyInLocal(party);
+      }
+
+      navigate(`/party/${id}/myVotes?c=true`);
+    } catch {
+      console.log("error");
+    }
+  };
+
+  const fTV = async () => {
+    if (party?.vote_on_days) {
+      setVotingStage("days");
+      return;
+    }
+    try {
+      if (!id) return;
+      await API.vote(id, rLikes, hLikes, null);
+
+      const party = getPartyFromLocal(id);
+      if (party) {
+        party.r_likes = rLikes;
+        party.h_likes = hLikes;
+        party.has_voted = true;
+        updatePartyInLocal(party);
+      }
+
+      navigate(`/party/${id}/myVotes?c=true`);
+    } catch {
+      console.log("error");
+    }
+  };
+
+  const fDV = async () => {
+    try {
+      if (!id) return;
+      await API.vote(id, rLikes, hLikes, dLikes);
+
+      const party = getPartyFromLocal(id);
+      if (party) {
+        party.r_likes = rLikes;
+        party.h_likes = hLikes;
+        party.d_likes = dLikes;
+        party.has_voted = true;
+        updatePartyInLocal(party);
+      }
+
+      navigate(`/party/${id}/myVotes?c=true`);
+    } catch {
+      console.log("error");
+    }
+  };
+
+  const handleBack = (res: string) => {
+    if (res === "cancel") {
+      setDialogOpen(false);
+      return;
+    }
+    if (res === "leave") {
+      navigate(`/party/${id}`);
+      return;
+    }
+    if (res === "submit") {
+      if (votingStage === "restaurants") {
+        fRV();
+      } else if (votingStage === "times") {
+        fTV();
+      } else if (votingStage === "days") {
+        fDV();
+      }
+    }
+    navigate(`/party/${id}`);
+  };
+
+  if (!id) {
+    navigate("/party/" + id);
+    return null;
+  }
+
+  switch (votingStage) {
+    case "restaurants":
+      return (
+        <>
+          <BackDialog
+            open={dialogOpen}
+            setOpen={setDialogOpen}
+            handleBack={handleBack}
+          />
+          <VoteRestaurant
+            fRV={fRV}
+            setRLikes={setRLikes}
+            restaurants={party?.restaurants}
+            onBack={() => setDialogOpen(true)}
+          />
+        </>
+      );
+    case "times":
+      return (
+        <>
+          <BackDialog
+            open={dialogOpen}
+            setOpen={setDialogOpen}
+            handleBack={handleBack}
+          />
+          <VoteTime
+            fTV={fTV}
+            setHLikes={setHLikes}
+            times_to_vote_on={party?.hours_to_vote_on}
+            onBack={() => setDialogOpen(true)}
+          />
+        </>
+      );
+    case "days":
+      return (
+        <>
+          <BackDialog
+            open={dialogOpen}
+            setOpen={setDialogOpen}
+            handleBack={handleBack}
+          />
+          <VoteDays
+            fDV={fDV}
+            setDLikes={setDLikes}
+            days_to_vote_on={party?.days_to_vote_on}
+            onBack={() => setDialogOpen(true)}
+          />
+        </>
+      );
+    default:
+      return null;
+  }
+};
+
+export default Swipe;

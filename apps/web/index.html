@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#F59E0B" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-startup-image" href="/ios/1024.png" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta
+      property="og:title"
+      content="
+    Where are we eating? - Organize a group dinner without the hassle. 
+    "
+    />
+    <meta
+      property="og:description"
+      content="Where are we eating? helps your party decide where to eat and when."
+    />
+    <meta
+      property="og:image"
+      content="https://www.thechickentinder.com/og.png"
+    />
+    <title>Where are we eating?</title>
+    <script type="text/javascript">
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          )
+        }
+      })(window.location)
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

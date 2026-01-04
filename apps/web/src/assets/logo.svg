@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Transparent background by default -->
+
+  <g transform="translate(512 560) skewX(-10)">
+    <text
+      x="0"
+      y="0"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      fill="#F59E0B"
+      font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+      font-weight="900"
+      font-size="260"
+      letter-spacing="-12"
+    >
+      WAWE?
+    </text>
+  </g>
+</svg>
