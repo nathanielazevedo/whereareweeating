@@ -24,7 +24,7 @@ const TwoStack = ({ title, body, variant, noButton, noTitle }: Props) => {
             {body}
           </Typography>
         )}
-        <Link to="/party/create">
+        <Link to="/party/create" style={{ width: "100%" }}>
           <Button text="Create a Party" />
         </Link>
       </Box>
