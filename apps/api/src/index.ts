@@ -12,7 +12,14 @@ import {
   endParty,
   updateParty,
   fetchRestaurants,
+  getAllParties,
+  deleteParty,
 } from './controllers/Party'
+
+import {
+  createFeedback,
+  getAllFeedback,
+} from './controllers/Feedback'
 
 dotenv.config()
 
@@ -23,16 +30,19 @@ const mongoURI = process.env.MONGO
 // Middleware
 app.use(cors())
 app.use(bodyParser.json())
-
 // Routes
 app.get('/', getParty)
 app.post('/', createParty)
-app.get('/party/:id', getParty)
+app.get('/party/all', getAllParties)
+app.delete('/party/:id', deleteParty)
 app.post('/party/:id/vote', voteParty)
 app.post('/party/:id/end', endParty)
 app.patch('/party/:id', updateParty)
 app.post('/party/:id/password', validatePassword)
+app.get('/party/:id', getParty)
 app.post('/restaurants', fetchRestaurants)
+app.post('/feedback', createFeedback)
+app.get('/feedback', getAllFeedback)
 
 // MongoDB Connection
 if (!mongoURI) {

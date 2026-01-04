@@ -152,6 +152,21 @@ const Footer = () => {
               Privacy Policy
             </Typography>
           </Link>
+          {import.meta.env.DEV && (
+            <Link to="/admin" style={{ textDecoration: "none" }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#EF4444",
+                  "&:hover": { color: "#DC2626" },
+                  transition: "color 0.2s",
+                  fontWeight: "600",
+                }}
+              >
+                Admin
+              </Typography>
+            </Link>
+          )}
         </Box>
 
         {/* Powered by Yelp */}

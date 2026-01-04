@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import Party from '../models/Party'
 import { TypedRequest, TypedRequestParams } from '../interfaces/Request'
-import { Response } from 'express'
+import { Response, Request } from 'express'
 import {
   likesToObj,
   getWinner,
@@ -153,5 +153,48 @@ export const updateParty = async (req: uPR, res: Response) => {
   } catch (err) {
     console.log(err)
     res.status(404).send()
+  }
+}
+
+// Get All Parties -> parties[] (development only)
+export const getAllParties = async (req: Request, res: Response) => {
+  try {
+    const page = parseInt(req.query.page as string) || 1
+    const limit = parseInt(req.query.limit as string) || 50
+    const skip = (page - 1) * limit
+
+    const [parties, total] = await Promise.all([
+      Party.find({}).sort({ _id: -1 }).skip(skip).limit(limit),
+      Party.countDocuments({})
+    ])
+
+    res.status(200).json({
+      parties,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+        hasMore: skip + parties.length < total
+      }
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(500).send()
+  }
+}
+
+// Delete Party -> success (development only)
+type dP = TypedRequestParams<{ id: string }>
+export const deleteParty = async (req: dP, res: Response) => {
+  try {
+    const party = await Party.findOne({ _id: req.params.id })
+    if (!party) return partyNotFound(res)
+    
+    await Party.deleteOne({ _id: req.params.id })
+    res.status(200).json({ success: true, message: 'Party deleted' })
+  } catch (err) {
+    console.log(err)
+    res.status(500).send()
   }
 }

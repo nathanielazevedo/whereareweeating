@@ -1,6 +1,7 @@
 import Hero from "./Hero";
 import Footer from "./Footer";
 import NavBar from "./Navbar";
+import FeedbackSection from "./FeedbackSection";
 import { useEffect, useState } from "react";
 import {
   getPartiesFromLocal,
@@ -26,6 +27,7 @@ const Intro = () => {
     >
       <NavBar myPartys={myParties.length > 0} />
       <Hero />
+      <FeedbackSection />
       <Footer />
     </Box>
   );
