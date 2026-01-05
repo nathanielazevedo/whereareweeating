@@ -19,6 +19,7 @@
    - Select "Deploy from GitHub repo"
    - Choose this repository
    - Set root directory to `apps/api`
+   - Railway will automatically detect and use the Dockerfile
 
 3. **Environment Variables**:
    Set these in Railway Dashboard under Variables:
