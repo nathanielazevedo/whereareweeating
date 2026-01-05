@@ -1,8 +1,5 @@
 FROM node:22-alpine
 
-# Install build dependencies for native modules
-RUN apk add --no-cache python3 make g++
-
 # Install pnpm
 RUN npm install -g pnpm
 
@@ -12,8 +9,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json ./
 
-# Install dependencies and rebuild bcrypt
-RUN pnpm install && pnpm rebuild bcrypt
+# Install dependencies
+RUN pnpm install
 
 # Copy source code
 COPY . .

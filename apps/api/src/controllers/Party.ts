@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import Party from '../models/Party'
 import { TypedRequest, TypedRequestParams } from '../interfaces/Request'
 import { Response, Request } from 'express'
