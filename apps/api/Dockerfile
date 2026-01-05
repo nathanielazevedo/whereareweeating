@@ -12,8 +12,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json ./
 
-# Install dependencies
-RUN pnpm install
+# Install dependencies and rebuild bcrypt
+RUN pnpm install && pnpm rebuild bcrypt
 
 # Copy source code
 COPY . .
